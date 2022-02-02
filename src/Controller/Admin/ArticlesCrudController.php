@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Articles;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -26,6 +27,10 @@ class ArticlesCrudController extends AbstractCrudController
             TextField::new('code'),
             MoneyField::new('prix')->setCurrency('EUR'),
             AssociationField::new('categorie'),
+            ImageField::new('imageName')
+                ->setBasePath('articles')
+                ->setUploadDir('/public/articles')
+                ->setUploadedFileNamePattern('[randomhash].[extension]')
         ];
     }
     
